@@ -1,0 +1,17 @@
+{
+    "name": "jota_santos/testes_unitarios",
+    "require": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "JotaSantos\\TestesUnitarios\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JotaPrimo",
+            "email": "gestald118@gmail.com"
+        }
+    ]
+}

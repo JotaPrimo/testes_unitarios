@@ -1,0 +1,10 @@
+as classes de testes devem ter Sufixo teste
+ex: ExportadorTest
+
+a classe precisa extender de \PHPUnit\Framework\TestCase;
+
+para o teste ser executado , deve começar com Test ou ter a anotation test
+
+
+para rodar os testes
+no terminal php vendor/bin/phpunit path-to-file/NomeDoArquivo.php
