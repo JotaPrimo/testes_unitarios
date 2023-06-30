@@ -5,7 +5,9 @@
     },
     "autoload": {
         "psr-4": {
-            "JotaSantos\\TestesUnitarios\\": "src/"
+            "JotaSantos\\TestesUnitarios\\": "src/",
+            "JotaSantos\\Classes\\": "src/Classes/",
+            "JotaSantos\\Testes\\": "src/tests/"
         }
     },
     "authors": [

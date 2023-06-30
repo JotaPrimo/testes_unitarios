@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace JotaSantos\TestesUnitarios;
+namespace JotaSantos\Testes;
 
 use \PHPUnit\Framework\TestCase;
 
