@@ -1,3 +1,8 @@
+  $variavel = fgets(STDIN);
+
+
+
+
 as classes de testes devem ter Sufixo teste
 ex: ExportadorTest
 

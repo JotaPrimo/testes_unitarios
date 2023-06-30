@@ -9,38 +9,38 @@ use PHPUnit\Framework\TestCase;
 
 final class ExtremelyBasicTest extends TestCase
 {
-    public function testDeveSerIgual()
+    /**
+     * @dataProvider valueProviderEquals
+     */
+    public function testDeveSerIgual($firstValue, $secondValue, $result)
     {
-
-        $data = [
-            [10, 9, 19],
-            [-10, 4, -6],
-            [15, -7, 8],
-        ];
-
-        foreach ($data as $key => $dt) {
-            $extremelyBasic = new ExtremelyBasic($dt[0], $dt[1]);
-            $this->assertSame($extremelyBasic->sum(), "X = " . $dt[2]);
-            // $this->assertEquals()
-        }
-
-        // $extremelyBasic2 = new ExtremelyBasic(-10, 4);
-        // $extremelyBasic3 = new ExtremelyBasic(15, -7);
-
-        // $this->assertSame($extremelyBasic1->sum(), "X = " . 19);
-        // $this->assertSame($extremelyBasic2->sum(), "X = " . -6);
-
+        $extremelyBasic = new ExtremelyBasic($firstValue, $secondValue);
+        $this->assertSame($extremelyBasic->sum(), "X = " . $result);
     }
 
-    // public function testTodosDevemSerFalse()
-    // {
-    //     $extremelyBasic1 = new ExtremelyBasic(10, 9);
-    //     $extremelyBasic2 = new ExtremelyBasic(-10, 4);
-    //     $extremelyBasic3 = new ExtremelyBasic(15, -7);
+    public function valueProviderEquals()
+    {
+        return [
+            'shouldBeEquals' => ['firstValue' => 10, 'secondValue' => 9, 'result' => 19],
+            'shouldBeEqualsTwo' => ['firstValue' => -10, 'secondValue' => 4, 'result' => -6],
+            'shouldBeEqualsTree' => ['firstValue' => 15, 'secondValue' => -7, 'result' => 8],
+        ];
+    }
 
-    //     $this->assertNotSame($extremelyBasic1->sum(), 17);
-    //     $this->assertNotSame($extremelyBasic2->sum(), -66);
-    //     $this->assertNotSame($extremelyBasic3->sum(), 81);
-    // }
+    /** @dataProvider valueProviderNotSame  */
+    public function testShouldBeNotSame($firstValue, $secondValue, $result)
+    {
+        $extremelyBasic = new ExtremelyBasic($firstValue, $secondValue);
+        $this->assertNotSame($extremelyBasic->sum(), "X = " . $result);
+    }
+
+    public function valueProviderNotSame()
+    {
+        return [
+            'shouldBeEquals' => ['firstValue' => 10, 'secondValue' => 9, 'result' => 18],
+            'shouldBeEqualsTwo' => ['firstValue' => -10, 'secondValue' => 4, 'result' => -7],
+            'shouldBeEqualsTree' => ['firstValue' => 15, 'secondValue' => -7, 'result' => 6],
+        ];
+    }
 
 }
