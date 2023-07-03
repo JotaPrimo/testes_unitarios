@@ -1,4 +1,4 @@
-  $variavel = fgets(STDIN);
+$variavel = fgets(STDIN);
 
 
 
