@@ -2,46 +2,23 @@
 
 require_once 'vendor/autoload.php';
 
-// $variavel = fgets(STDIN);
+$distanciaTotal = fgets(STDIN);
+$gastoCombustivel = fgets(STDIN);
 
-$codeProd = fgets(STDIN);
-$numberUnitsProd = fgets(STDIN);
-$priceOfUnitProd = fgets(STDIN) * 100;
-
-$codeProdTwo = fgets(STDIN);
-$numberUnitsProdTwo = fgets(STDIN);
-$priceOfUnitProdTwo = fgets(STDIN) * 100;
-
-$dataProdOne = [
-    'codeProd' => $codeProd,
-    'numberUnitsProd' => $numberUnitsProd,
-    'priceOfUnitProd' => $priceOfUnitProd,
-];
-
-$dataProdTwo = [
-    'codeProdTwo' => $codeProdTwo,
-    'numberUnitsProdTwo' => $numberUnitsProdTwo,
-    'priceOfUnitProdTwo' => $priceOfUnitProdTwo,
-];
-
-function getTotalPrice($numberUnitsProd, $priceOfUnitProd)
+function formatandoGastoCombustivel($gastoCombustivel)
 {
-    if ($numberUnitsProd == 0 || $priceOfUnitProd == 0) {
-        return 0;
-    }
-
-    return $numberUnitsProd * $priceOfUnitProd;
+    return number_format($gastoCombustivel, 1, '.', '');
 }
 
-function calculateTotalPriceOfShoping($dataProdOne, $dataProdTwo)
+function formatandoComsumoMedio($comsumoMedio)
 {
-    $totalGeralProdOne = getTotalPrice($dataProdOne['numberUnitsProd'], $dataProdOne['priceOfUnitProd']);
-    $totalGeralProdTwo = getTotalPrice($dataProdTwo['numberUnitsProdTwo'], $dataProdTwo['priceOfUnitProdTwo']);
-
-    return ($totalGeralProdOne + $totalGeralProdTwo) / 100;
+    return number_format($comsumoMedio, 3, '.', '');
 }
 
-$result = calculateTotalPriceOfShoping($dataProdOne, $dataProdTwo);
-$roundedResult = round($result, 2, PHP_ROUND_HALF_EVEN);
+function calculateGasto($distanciaTotal, $gastoCombustivel)
+{
+    $comsumoMedio = $distanciaTotal / formatandoGastoCombustivel($gastoCombustivel);
+    return formatandoComsumoMedio($comsumoMedio) . " km/l" . PHP_EOL;
+}
 
-echo "VALOR A PAGAR: R$ " . number_format($result, 2, '.', '') . PHP_EOL;
+echo calculateGasto($distanciaTotal, $gastoCombustivel);
